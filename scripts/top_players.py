@@ -2,8 +2,9 @@ import openpyxl
 from pathlib import Path
 from collections import defaultdict
 import json
-
-filepath = Path(__file__).parent / 'ratings.xlsx'
+root_dir = Path(__file__).parent.parent
+filepath = root_dir / "input-files" / "ratings.xlsx"
+output_filepath = root_dir / "output-files" / "player_ratings.json"
 sheet = openpyxl.load_workbook(filepath).active
 if sheet is None:
     raise ValueError("No active sheet in workbook")
@@ -21,5 +22,5 @@ for cindex in (1, 4, 7):
 sorted_ratings = sorted(rating_sums.items(), key = lambda x: x[1], reverse = True)[:20]
 for player, rating_sum in sorted_ratings:
     print(f"{player}: {rating_sum}")
-with open("player_ratings.json", 'w') as f:
+with open(output_filepath, 'w') as f:
     json.dump(dict(sorted_ratings), f, indent = 4)

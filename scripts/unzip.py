@@ -1,7 +1,8 @@
 from pathlib import Path
 import zipfile
-zipped_dir = Path(__file__).parent / 'twic-pgns-zipped'
-extracted_dir = Path(__file__).parent / 'twic-pgns'
+root_dir = Path(__file__).parent.parent
+zipped_dir = root_dir / "input-files" / "twic-pgns-zipped"
+extracted_dir = root_dir / "output-files" / "twic-pgns2"
 total = 0
 for filepath in zipped_dir.iterdir():
     if filepath.suffix == ".zip":
