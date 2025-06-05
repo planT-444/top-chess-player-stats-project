@@ -19,7 +19,7 @@ for cindex in (1, 4, 7):
             rating_sums[name] += int(rating)
 
 
-sorted_ratings = sorted(rating_sums.items(), key = lambda x: x[1], reverse = True)[:20]
+sorted_ratings = sorted(rating_sums.items(), key = lambda x: x[1], reverse = True)[:21]
 for player, rating_sum in sorted_ratings:
     print(f"{player}: {rating_sum}")
 with open(output_filepath, 'w') as f:
