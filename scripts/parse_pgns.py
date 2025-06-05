@@ -21,7 +21,7 @@ games = {
 pgns_dir = root_dir / "output-files" / "twic-pgns"
 
 def parse_pgn(pgnpath) -> None:
-    with open(pgnpath, encoding="utf-8") as pgn_file:
+    with open(pgnpath, encoding="windows-1252") as pgn_file:
         while (game := chess.pgn.read_game(pgn_file)) is not None:
             white_player = game.headers.get("White", "")
             black_player = game.headers.get("Black", "")
